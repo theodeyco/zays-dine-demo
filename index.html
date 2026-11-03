@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zay's Dine | Cafe and Brunch</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    try {
+      if (sessionStorage.getItem("steam")) {
+        document.documentElement.classList.add("steam-arrive");
+      }
+    } catch (error) { }
+  </script>
+</head>
+
+<body>
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <header class="nav">
+    <a class="nav-brand" href="index.html">Zay&rsquo;s Dine</a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="index.html#contact">Reserve</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Zay's Dine</h1>
+    <p>Cafe and Brunch</p>
+    <a class="button" href="#contact">Reserve a Table</a>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <div class="about">
+    <h2>About Zay's Dine</h2>
+    <p>Slow mornings, good coffee, and a long brunch table. Walk-ins welcome, reservations preferred.</p>
+  </div>
+
+  <div class="special">
+    <h2>Today's Special</h2>
+    <div class="pole"></div>
+    <div class="special-card" id="special-card"></div>
+  </div>
+
+  <div class="picks">
+    <h2>From the Kitchen</h2>
+    <div class="pole"></div>
+    <div class="picks-grid" id="picks-grid"></div>
+    <a class="button" href="menu.html">See the Full Menu</a>
+  </div>
+
+  <div class="gallery">
+    <h2>The Space</h2>
+    <div class="pole"></div>
+
+    <div class="gallery-grid">
+      <div class="shot"><img src="images/cafe1.jpg" alt="Sunlit window seats with wooden tables."></div>
+      <div class="shot"><img src="images/cafe2.jpg" alt="Decadent chocolate macarons, beautifully served."></div>
+      <div class="shot"><img src="images/cafe3.jpg"
+          alt="Golden pastries topped with fresh cream and chocolate shavings."></div>
+    </div>
+  </div>
+
+  <div class="hours">
+    <h2>Hours and Location</h2>
+    <div class="pole"></div>
+    <div class="sign-wrap">
+      <div class="sign" id="sign">
+        <svg class="sign-strings" viewBox="0 0 160 44" aria-hidden="true">
+          <path d="M80 2 L30 44 M80 2 L130 44" />
+        </svg>
+        <div class="sign-board">
+          <small>We're</small>
+          <strong id="sign-text">...</strong>
+        </div>
+      </div>
+    </div>
+    <p class="kitchen-line" id="kitchen-line" aria-live="polite"></p>
+
+    <div class="hours-card" id="hours-card"></div>
+
+    <p>123 Main Street, Round Rock, TX</p>
+    <a class="button" href="https://www.google.com/maps/search/?api=1&query=Round+Rock+TX" target="_blank"
+      rel="noopener">Get Directions</a>
+  </div>
+
+  <div class="socials" id="socials">
+    <h2>Follow and Message Us</h2>
+    <div class="pole"></div>
+
+    <div class="social-row">
+      <a class="social" href="#socials" aria-label="Instagram">
+        <span class="social-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="social-label">Instagram</span>
+      </a>
+
+      <a class="social" href="#socials" aria-label="TikTok">
+        <span class="social-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 3v11.2a3.8 3.8 0 1 1-3.8-3.8" />
+            <path d="M14 3c.4 2.6 2.1 4.3 5 4.6" />
+          </svg>
+        </span>
+        <span class="social-label">TikTok</span>
+      </a>
+
+      <a class="social" href="#socials" aria-label="WhatsApp">
+        <span class="social-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21z" />
+            <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.3-1.3-2-1-1 .7a4 4 0 0 1-2-2l.7-1-1-2L9 8.5z" />
+          </svg>
+        </span>
+        <span class="social-label">WhatsApp</span>
+      </a>
+
+      <a class="social" href="#socials" aria-label="Snapchat">
+        <span class="social-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 20V12a7 7 0 0 1 14 0v8l-2.4-2-2.3 2-2.3-2-2.3 2-2.3-2L5 20z" />
+          </svg>
+        </span>
+        <span class="social-label">Snapchat</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact" id="contact">
+    <h2>Reserve a Table</h2>
+    <p>Phone: (555) 123-4567</p>
+    <p>Email: vimier@example.com</p>
+    <form class="contact-form" action="https://formspree.io/f/xyeeblyj" method="POST">
+      <label for="name">Your name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone">
+
+      <label id="party-label">Party size</label>
+      <div class="stepper" role="group" aria-labelledby="party-label">
+        <button type="button" class="step" id="party-minus" aria-label="Fewer guests">&minus;</button>
+        <output id="party-count" aria-live="polite">2</output>
+        <button type="button" class="step" id="party-plus" aria-label="More guests">+</button>
+      </div>
+      <input type="hidden" id="party" name="party_size" value="2">
+      <p class="party-note" id="party-note"></p>
+
+      <label for="date">Date</label>
+      <input type="date" id="date" name="preferred_date" required>
+
+      <label for="slot">Time</label>
+      <select id="slot" name="preferred_time" required>
+        <option value="">Choose a date first</option>
+      </select>
+
+      <label for="message">Seating or dietary notes (optional)</label>
+      <textarea id="message" name="message" rows="3"
+        placeholder="Highchair, window seat, an allergy we should know about"></textarea>
+
+      <button type="submit" class="button">Request a Table</button>
+    </form>
+
+    <div class="spinner" id="spinner"></div>
+
+    <p class="form-message" id="form-message"></p>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <button class="chat-toggle" id="chat-toggle" type="button" aria-label="Open chat" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 21 12z" />
+    </svg>
+  </button>
+
+  <div class="chat" id="chat" role="dialog" aria-label="Chat with Zay's Dine" aria-hidden="true">
+    <div class="chat-head">
+      <div>
+        <strong>Zay's Dine</strong>
+        <span>Virtual assistant</span>
+      </div>
+      <div class="chat-tools">
+        <button class="chat-sound" id="chat-sound" type="button" aria-pressed="true">Sound on</button>
+        <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">&times;</button>
+      </div>
+    </div>
+
+    <div class="chat-log" id="chat-log"></div>
+    <div class="chat-chips" id="chat-chips"></div>
+
+    <form class="chat-input" id="chat-form">
+      <input type="text" id="chat-text" placeholder="Type a question..." autocomplete="off" maxlength="200">
+      <button type="submit" aria-label="Send">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 12l16-8-6 16-3-7-7-1z" />
+        </svg>
+      </button>
+    </form>
+  </div>
+  <button class="cup-fab" id="cup-fab" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <defs>
+        <clipPath id="cup-clip">
+          <path d="M14 26h32v14a12 12 0 0 1-12 12h-8A12 12 0 0 1 14 40V26z" />
+        </clipPath>
+      </defs>
+      <rect class="cup-liquid" x="10" y="26" width="40" height="28" clip-path="url(#cup-clip)" />
+      <path d="M14 26h32v14a12 12 0 0 1-12 12h-8A12 12 0 0 1 14 40V26z" />
+      <path d="M46 30h4a6 6 0 0 1 0 12h-4" />
+      <path d="M8 56h44" />
+    </svg>
+  </button>
+  <script src="data.js"></script>
+  <script src="common.js"></script>
+  <script src="chat.js"></script>
+  <script>
+
+    document.querySelectorAll(".shot").forEach(function (item, index) {
+      item.classList.add("reveal");
+      item.style.setProperty("--d", index * 0.1 + "s");
+      observer.observe(item);
+    });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    document.querySelectorAll(".shot img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("show");
+      });
+    });
+
+    lightbox.addEventListener("click", function () {
+      lightbox.classList.remove("show");
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        lightbox.classList.remove("show");
+      }
+    });
+
+    /* ----- today's special, generated from data.js ----- */
+    function renderSpecial() {
+      const box = document.getElementById("special-card");
+      const day = shopClock().day;
+      const plan = SPECIALS[day];
+      const dish = plan && MENU.find(function (d) { return d.name === plan.dish; });
+
+      if (!dish) {
+        box.parentElement.style.display = "none";
+        return;
+      }
+
+      box.innerHTML = "";
+
+      const cup = document.createElement("div");
+      cup.className = "cup";
+      cup.setAttribute("aria-hidden", "true");
+      cup.innerHTML =
+        (dish.hot ? '<div class="steam"><span></span><span></span><span></span><span></span></div>' : "") +
+        '<svg viewBox="0 0 64 64"><path d="M14 26h32v14a12 12 0 0 1-12 12h-8A12 12 0 0 1 14 40V26z"/><path d="M46 30h4a6 6 0 0 1 0 12h-4"/><path d="M8 56h44"/></svg>';
+
+      const text = document.createElement("div");
+
+      const label = document.createElement("span");
+      label.className = "special-day";
+      label.textContent = day + "'s special";
+
+      const name = document.createElement("h3");
+      name.textContent = dish.name;
+
+      const desc = document.createElement("p");
+      desc.textContent = dish.desc;
+
+      const price = document.createElement("span");
+      price.className = "special-price";
+      price.textContent = "$" + plan.deal.toFixed(2);
+      price.dataset.count = plan.deal;
+
+      const was = document.createElement("s");
+      was.className = "was";
+      was.textContent = "$" + dish.price.toFixed(2);
+
+      text.append(label, name, desc, price, was);
+      box.append(cup, text);
+      watchCounts(box);
+    }
+
+    /* ----- hours card, generated from data.js ----- */
+    function renderHours() {
+      const card = document.getElementById("hours-card");
+      card.innerHTML = "";
+
+      DAYS.slice(1).concat(DAYS[0]).forEach(function (day) {
+        const row = document.createElement("div");
+        row.className = "hours-row";
+        row.dataset.day = day;
+
+        const name = document.createElement("span");
+        name.textContent = day;
+
+        const time = document.createElement("span");
+        const h = HOURS[day];
+        time.textContent = h ? formatHour(h[0]) + " - " + formatHour(h[1]) : "Closed";
+
+        row.append(name, time);
+        card.appendChild(row);
+      });
+    }
+
+    /* ----- swinging sign, kitchen line, today's row ----- */
+    function updateStatus() {
+      const status = kitchenStatus();
+      const day = shopClock().day;
+
+      document.getElementById("sign-text").textContent = status.open ? "OPEN" : "CLOSED";
+      document.getElementById("sign").classList.toggle("closed", !status.open);
+      document.getElementById("kitchen-line").textContent = status.text;
+
+      document.querySelectorAll(".hours-row").forEach(function (row) {
+        row.classList.toggle("today", row.dataset.day === day);
+      });
+    }
+
+    /* ----- scrolling ticker ----- */
+    function renderTicker() {
+      const track = document.getElementById("ticker-track");
+
+      const items = DAYS.slice(1).concat(DAYS[0]).map(function (day) {
+        const plan = SPECIALS[day];
+        return plan ? day + ": " + plan.dish + " $" + plan.deal.toFixed(2) : "";
+      }).filter(Boolean);
+
+      items.unshift("Fresh coffee and brunch daily");
+      const line = items.join("  \u2022  ") + "  \u2022  ";
+
+      for (let i = 0; i < 2; i++) {
+        const group = document.createElement("span");
+        group.className = "ticker-group";
+        group.textContent = line;
+        track.appendChild(group);
+      }
+    }
+
+    /* ----- "From the Kitchen", built from the menu in data.js ----- */
+    function renderPicks() {
+      const grid = document.getElementById("picks-grid");
+      const seen = new Set();
+
+      MENU.filter(function (d) {
+        if (seen.has(d.category)) return false;
+        seen.add(d.category);
+        return true;
+      }).slice(0, 3).forEach(function (d) {
+        const card = document.createElement("article");
+        card.className = "pick";
+
+        const cat = document.createElement("span");
+        cat.className = "pick-cat";
+        cat.textContent = d.category;
+
+        const name = document.createElement("h3");
+        name.textContent = d.name;
+
+        const desc = document.createElement("p");
+        desc.textContent = d.desc;
+
+        const price = document.createElement("span");
+        price.className = "pick-price";
+        price.textContent = "$" + d.price.toFixed(2);
+        price.dataset.count = d.price;
+
+        card.append(cat, name, desc, price);
+        grid.appendChild(card);
+      });
+
+      revealAll(".pick", 0.12);
+      watchCounts(grid);
+    }
+
+    renderSpecial();
+    renderHours();
+    updateStatus();
+    renderTicker();
+    setInterval(updateStatus, 30000);
+    renderPicks();
+
+
+    const hoursCard = document.querySelector(".hours-card");
+    hoursCard.classList.add("reveal");
+    observer.observe(hoursCard);
+
+    /* ----- reservation form ----- */
+    const partyInput = document.getElementById("party");
+    const partyCount = document.getElementById("party-count");
+    const partyNote = document.getElementById("party-note");
+    const partyMinus = document.getElementById("party-minus");
+    const partyPlus = document.getElementById("party-plus");
+    const dateInput = document.getElementById("date");
+    const slotSelect = document.getElementById("slot");
+
+    const MIN_PARTY = 1;
+    const MAX_PARTY = 12;
+
+    function setParty(n, animate) {
+      const size = Math.min(MAX_PARTY, Math.max(MIN_PARTY, n));
+
+      partyInput.value = size;
+      partyCount.textContent = size;
+      partyMinus.disabled = size <= MIN_PARTY;
+      partyPlus.disabled = size >= MAX_PARTY;
+      partyNote.textContent = size > 8 ? "For parties over 8, please also call us so we can plan seating." : "";
+
+      if (animate && !calmMotion) {
+        partyCount.classList.remove("bump");
+        void partyCount.offsetWidth;
+        partyCount.classList.add("bump");
+      }
+    }
+
+    partyMinus.addEventListener("click", function () { setParty(Number(partyInput.value) - 1, true); });
+    partyPlus.addEventListener("click", function () { setParty(Number(partyInput.value) + 1, true); });
+    setParty(2, false);
+
+    function shopToday() {
+      return new Intl.DateTimeFormat("en-CA", { timeZone: SHOP_TZ }).format(new Date());
+    }
+
+    function addDays(dateStr, n) {
+      const d = new Date(dateStr + "T12:00:00");
+      d.setDate(d.getDate() + n);
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    }
+
+    function formatTime(totalMinutes) {
+      const h = Math.floor(totalMinutes / 60);
+      const m = totalMinutes % 60;
+      return (h % 12 || 12) + ":" + String(m).padStart(2, "0") + " " + (h < 12 ? "AM" : "PM");
+    }
+
+    function buildSlots() {
+      slotSelect.innerHTML = "";
+      dateInput.setCustomValidity("");
+
+      if (!dateInput.value) {
+        slotSelect.add(new Option("Choose a date first", ""));
+        return;
+      }
+
+      const day = DAYS[new Date(dateInput.value + "T12:00:00").getDay()];
+      const hours = HOURS[day];
+
+      if (!hours) {
+        slotSelect.add(new Option("Closed that day", ""));
+        dateInput.setCustomValidity("We're closed on " + day + "s. Please pick another day.");
+        dateInput.reportValidity();
+        return;
+      }
+
+      const clock = shopClock();
+      const nowMinutes = clock.hour * 60 + clock.minute;
+      const isToday = dateInput.value === shopToday();
+      const slots = [];
+
+      for (let m = hours[0] * 60; m <= hours[1] * 60 - 45; m += 30) {
+        if (isToday && m < nowMinutes + 30) continue;
+        slots.push(m);
+      }
+
+      if (slots.length === 0) {
+        slotSelect.add(new Option("No tables left today", ""));
+        return;
+      }
+
+      slotSelect.add(new Option("Choose a time", ""));
+      slots.forEach(function (m) {
+        slotSelect.add(new Option(formatTime(m), formatTime(m)));
+      });
+    }
+
+    dateInput.min = shopToday();
+    dateInput.max = addDays(shopToday(), 60);
+    dateInput.addEventListener("change", buildSlots);
+    buildSlots();
+
+    /* after a successful send, the form resets, so bring the stepper and times back in line */
+    document.querySelector(".contact-form").addEventListener("reset", function () {
+      setTimeout(function () {
+        setParty(2, false);
+        buildSlots();
+      }, 0);
+    });
+
+    document.querySelectorAll(".social").forEach(function (item, index) {
+      item.classList.add("reveal");
+      item.style.setProperty("--d", index * 0.12 + "s");
+      observer.observe(item);
+
+      item.addEventListener("click", function (event) {
+        const icon = item.querySelector(".social-icon");
+        const rect = icon.getBoundingClientRect();
+        const size = rect.width;
+
+        const dot = document.createElement("span");
+        dot.className = "ripple";
+        dot.style.width = size + "px";
+        dot.style.height = size + "px";
+        dot.style.left = event.clientX - rect.left - size / 2 + "px";
+        dot.style.top = event.clientY - rect.top - size / 2 + "px";
+
+        icon.appendChild(dot);
+        setTimeout(function () { dot.remove(); }, 600);
+      });
+    });
+
+    const specialCard = document.querySelector(".special-card");
+    specialCard.classList.add("reveal");
+    observer.observe(specialCard);
+
+
+
+    const scriptURL = " https://script.google.com/macros/s/AKfycby7LgG3WpQQQ1TgdRtKgGBzH3nIF9z3K6WkLyDwp60JYbO3HmTEMzbMXmiAh8yNDI1v4w/exec ";
+
+    const form = document.querySelector(".contact-form");
+    const message = document.getElementById("form-message");
+    const spinner = document.getElementById("spinner");
+    const sendButton = form.querySelector('button[type="submit"]');
+
+    function showMessage(text) {
+      message.innerHTML = "";
+
+      text.split(" ").forEach(function (word, index) {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.className = "word";
+        span.style.animationDelay = index * 0.15 + "s";
+        message.appendChild(span);
+      });
+
+      message.classList.add("show");
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      message.classList.remove("show");
+      spinner.classList.add("show");
+      sendButton.disabled = true;
+
+      const formData = new FormData(form);
+
+      fetch(scriptURL, { method: "POST", body: formData, mode: "no-cors" })
+        .then(function () {
+          console.log("Sent to lead handler");
+        })
+        .catch(function (error) {
+          console.log("Lead handler send failed:", error);
+        });
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            showMessage("Thanks! We'll confirm your table soon.");
+            form.reset();
+          } else {
+            showMessage("Something went wrong. Please call or email instead.");
+          }
+        })
+        .catch(function () {
+          showMessage("Network problem. Please try again, or call or email instead.");
+        })
+        .finally(function () {
+          spinner.classList.remove("show");
+          sendButton.disabled = false;
+        });
+    });
+  </script>
+</body>
+
+</html>
